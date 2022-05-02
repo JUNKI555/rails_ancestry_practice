@@ -1,2 +1,2 @@
-# rails_ancestry_test
-rails ancestry test
+# rails_ancestry_practice
+rails ancestry practice
