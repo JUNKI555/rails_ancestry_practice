@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Board:</strong>
+  <%= @epic.board_id %>
+</p>
+
+<p>
+  <strong>Epic name:</strong>
+  <%= @epic.epic_name %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @epic.cost %>
+</p>
+
+<%= link_to 'Edit', edit_epic_path(@epic) %> |
+<%= link_to 'Back', epics_path %>

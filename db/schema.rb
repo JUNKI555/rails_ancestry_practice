@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_08_112318) do
+ActiveRecord::Schema.define(version: 2022_05_08_113150) do
 
   create_table "boards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "board_name"
@@ -18,4 +18,14 @@ ActiveRecord::Schema.define(version: 2022_05_08_112318) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "epics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "board_id", null: false
+    t.string "epic_name"
+    t.integer "cost"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["board_id"], name: "index_epics_on_board_id"
+  end
+
+  add_foreign_key "epics", "boards"
 end
