@@ -1,0 +1,2 @@
+class SubBoard < ApplicationRecord
+end

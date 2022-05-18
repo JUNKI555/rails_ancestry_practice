@@ -1,0 +1,22 @@
+<%= form_with(model: sub_board) do |form| %>
+  <% if sub_board.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sub_board.errors.count, "error") %> prohibited this sub_board from being saved:</h2>
+
+      <ul>
+        <% sub_board.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :board_name %>
+    <%= form.text_field :board_name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
