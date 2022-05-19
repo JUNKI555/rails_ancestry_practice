@@ -10,12 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_18_062424) do
+ActiveRecord::Schema.define(version: 2022_05_19_035249) do
+
+  create_table "board_ancestries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "board_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "boards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "board_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "epic_ancestries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "board_ancestry_id", null: false
+    t.string "epic_name"
+    t.integer "cost"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["board_ancestry_id"], name: "index_epic_ancestries_on_board_ancestry_id"
   end
 
   create_table "epics", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -25,6 +40,15 @@ ActiveRecord::Schema.define(version: 2022_05_18_062424) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["board_id"], name: "index_epics_on_board_id"
+  end
+
+  create_table "issue_ancestries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "epic_ancestry_id", null: false
+    t.string "issue_name"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["epic_ancestry_id"], name: "index_issue_ancestries_on_epic_ancestry_id"
   end
 
   create_table "issues", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -51,7 +75,9 @@ ActiveRecord::Schema.define(version: 2022_05_18_062424) do
     t.index ["sub_board_id"], name: "index_sub_epics_on_sub_board_id"
   end
 
+  add_foreign_key "epic_ancestries", "board_ancestries"
   add_foreign_key "epics", "boards"
+  add_foreign_key "issue_ancestries", "epic_ancestries"
   add_foreign_key "issues", "epics"
   add_foreign_key "sub_epics", "sub_boards"
 end

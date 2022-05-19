@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Issue Ancestries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Epic ancestry</th>
+      <th>Issue name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @issue_ancestries.each do |issue_ancestry| %>
+      <tr>
+        <td><%= issue_ancestry.id %></td>
+        <td><%= issue_ancestry.epic_ancestry_id %></td>
+        <td><%= issue_ancestry.issue_name %></td>
+        <td><%= issue_ancestry.description %></td>
+        <td><%= link_to 'Show', issue_ancestry %></td>
+        <td><%= link_to 'Edit', edit_issue_ancestry_path(issue_ancestry) %></td>
+        <td><%= link_to 'Destroy', issue_ancestry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Issue Ancestry', new_issue_ancestry_path %>

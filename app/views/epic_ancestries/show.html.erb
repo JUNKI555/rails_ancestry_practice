@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Board ancestry:</strong>
+  <%= @epic_ancestry.board_ancestry_id %>
+</p>
+
+<p>
+  <strong>Epic name:</strong>
+  <%= @epic_ancestry.epic_name %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @epic_ancestry.cost %>
+</p>
+
+<%= link_to 'Edit', edit_epic_ancestry_path(@epic_ancestry) %> |
+<%= link_to 'Back', epic_ancestries_path %>

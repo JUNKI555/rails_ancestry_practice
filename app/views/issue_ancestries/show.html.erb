@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Epic ancestry:</strong>
+  <%= @issue_ancestry.epic_ancestry_id %>
+</p>
+
+<p>
+  <strong>Issue name:</strong>
+  <%= @issue_ancestry.issue_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @issue_ancestry.description %>
+</p>
+
+<%= link_to 'Edit', edit_issue_ancestry_path(@issue_ancestry) %> |
+<%= link_to 'Back', issue_ancestries_path %>

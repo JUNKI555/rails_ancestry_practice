@@ -1,0 +1,32 @@
+<%= form_with(model: epic_ancestry) do |form| %>
+  <% if epic_ancestry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(epic_ancestry.errors.count, "error") %> prohibited this epic_ancestry from being saved:</h2>
+
+      <ul>
+        <% epic_ancestry.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :board_ancestry_id %>
+    <%= form.text_field :board_ancestry_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :epic_name %>
+    <%= form.text_field :epic_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cost %>
+    <%= form.number_field :cost %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

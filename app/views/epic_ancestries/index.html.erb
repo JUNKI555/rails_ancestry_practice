@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Epic Ancestries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Board ancestry</th>
+      <th>Epic name</th>
+      <th>Cost</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @epic_ancestries.each do |epic_ancestry| %>
+      <tr>
+        <td><%= epic_ancestry.id %></td>
+        <td><%= epic_ancestry.board_ancestry_id %></td>
+        <td><%= epic_ancestry.epic_name %></td>
+        <td><%= epic_ancestry.cost %></td>
+        <td><%= link_to 'Show', epic_ancestry %></td>
+        <td><%= link_to 'Edit', edit_epic_ancestry_path(epic_ancestry) %></td>
+        <td><%= link_to 'Destroy', epic_ancestry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Epic Ancestry', new_epic_ancestry_path %>
