@@ -41,4 +41,6 @@ rails g scaffold IssueAncestry epic_ancestry:references issue_name:string descri
 rails g scaffold BoardClosure board_name:string --skip-assets --skip-helper --skip-stylesheets --skip-jbuilder
 rails g scaffold EpicClosure board_closure:references epic_name:string cost:integer --skip-assets --skip-helper --skip-stylesheets --skip-jbuilder
 rails g scaffold IssueClosure epic_closure:references issue_name:string description:string --skip-assets --skip-helper --skip-stylesheets --skip-jbuilder
+
+rails g controller home index --skip-assets --skip-helper --skip-stylesheets --skip-jbuilder
 ```
