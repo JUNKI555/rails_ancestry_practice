@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Board closure:</strong>
+  <%= @epic_closure.board_closure_id %>
+</p>
+
+<p>
+  <strong>Epic name:</strong>
+  <%= @epic_closure.epic_name %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @epic_closure.cost %>
+</p>
+
+<%= link_to 'Edit', edit_epic_closure_path(@epic_closure) %> |
+<%= link_to 'Back', epic_closures_path %>

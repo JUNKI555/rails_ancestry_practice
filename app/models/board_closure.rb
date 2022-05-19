@@ -1,0 +1,2 @@
+class BoardClosure < ApplicationRecord
+end

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :issue_closures
+  resources :epic_closures
+  resources :board_closures
   resources :issue_ancestries
   resources :epic_ancestries
   resources :board_ancestries

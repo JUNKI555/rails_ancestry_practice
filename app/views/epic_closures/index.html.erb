@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Epic Closures</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Board closure</th>
+      <th>Epic name</th>
+      <th>Cost</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @epic_closures.each do |epic_closure| %>
+      <tr>
+        <td><%= epic_closure.id %></td>
+        <td><%= epic_closure.board_closure_id %></td>
+        <td><%= epic_closure.epic_name %></td>
+        <td><%= epic_closure.cost %></td>
+        <td><%= link_to 'Show', epic_closure %></td>
+        <td><%= link_to 'Edit', edit_epic_closure_path(epic_closure) %></td>
+        <td><%= link_to 'Destroy', epic_closure, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Epic Closure', new_epic_closure_path %>

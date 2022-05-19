@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Epic closure:</strong>
+  <%= @issue_closure.epic_closure_id %>
+</p>
+
+<p>
+  <strong>Issue name:</strong>
+  <%= @issue_closure.issue_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @issue_closure.description %>
+</p>
+
+<%= link_to 'Edit', edit_issue_closure_path(@issue_closure) %> |
+<%= link_to 'Back', issue_closures_path %>
