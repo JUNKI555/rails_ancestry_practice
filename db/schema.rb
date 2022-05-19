@@ -10,12 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_19_040854) do
+ActiveRecord::Schema.define(version: 2022_05_19_050509) do
 
   create_table "board_ancestries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "board_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "ancestry"
+    t.integer "ancestry_depth", default: 0
+    t.index ["ancestry"], name: "index_board_ancestries_on_ancestry"
   end
 
   create_table "board_closures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

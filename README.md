@@ -43,4 +43,6 @@ rails g scaffold EpicClosure board_closure:references epic_name:string cost:inte
 rails g scaffold IssueClosure epic_closure:references issue_name:string description:string --skip-assets --skip-helper --skip-stylesheets --skip-jbuilder
 
 rails g controller home index --skip-assets --skip-helper --skip-stylesheets --skip-jbuilder
+
+rails g migration add_ancestry_to_board_ancestry ancestry:string:index
 ```
