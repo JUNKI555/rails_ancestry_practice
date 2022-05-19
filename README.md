@@ -26,6 +26,8 @@ Things you may want to cover:
 ### scaffold commands
 
 ```bash
+rails g annotate:install
+
 rails g scaffold Board board_name:string --skip-assets --skip-helper --skip-stylesheets --skip-jbuilder
 rails g scaffold Epic board:references epic_name:string cost:integer --skip-assets --skip-helper --skip-stylesheets --skip-jbuilder
 rails g scaffold Issue epic:references issue_name:string description:string --skip-assets --skip-helper --skip-stylesheets --skip-jbuilder
