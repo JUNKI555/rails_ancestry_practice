@@ -1,0 +1,32 @@
+<%= form_with(model: sub_epic) do |form| %>
+  <% if sub_epic.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sub_epic.errors.count, "error") %> prohibited this sub_epic from being saved:</h2>
+
+      <ul>
+        <% sub_epic.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :sub_board_id %>
+    <%= form.text_field :sub_board_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :epic_name %>
+    <%= form.text_field :epic_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cost %>
+    <%= form.number_field :cost %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

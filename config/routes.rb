@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sub_epics
   resources :sub_boards
   resources :issues
   resources :epics

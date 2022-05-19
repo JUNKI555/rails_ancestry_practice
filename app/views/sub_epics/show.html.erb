@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Sub board:</strong>
+  <%= @sub_epic.sub_board_id %>
+</p>
+
+<p>
+  <strong>Epic name:</strong>
+  <%= @sub_epic.epic_name %>
+</p>
+
+<p>
+  <strong>Cost:</strong>
+  <%= @sub_epic.cost %>
+</p>
+
+<%= link_to 'Edit', edit_sub_epic_path(@sub_epic) %> |
+<%= link_to 'Back', sub_epics_path %>

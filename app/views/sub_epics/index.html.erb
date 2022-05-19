@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Sub Epics</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Sub board</th>
+      <th>Epic name</th>
+      <th>Cost</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sub_epics.each do |sub_epic| %>
+      <tr>
+        <td><%= sub_epic.id %></td>
+        <td><%= sub_epic.sub_board_id %></td>
+        <td><%= sub_epic.epic_name %></td>
+        <td><%= sub_epic.cost %></td>
+        <td><%= link_to 'Show', sub_epic %></td>
+        <td><%= link_to 'Edit', edit_sub_epic_path(sub_epic) %></td>
+        <td><%= link_to 'Destroy', sub_epic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sub Epic', new_sub_epic_path %>
