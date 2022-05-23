@@ -16,4 +16,13 @@
 class BoardAncestry < ApplicationRecord
   has_ancestry orphan_strategy: :rootify, cache_depth: true
   has_many :epic_ancestries
+
+  scope :leaves, -> { joins("LEFT JOIN board_ancestries AS c ON c.ancestry = CAST(board_ancestries.id AS char(50)) OR c.ancestry = concat(board_ancestries.ancestry, '/', board_ancestries.id)").group("board_ancestries.id").having('COUNT(c.id) = 0') }
+  scope :not_parents_and_not_children, -> { roots.leaves }
+  scope :parents, -> { where(id: BoardAncestry.select(:ancestry).distinct.pluck(:ancestry).compact.map { |x| x.split('/') }.flatten.uniq) }
+  scope :parents_or_children, -> { parents.or(BoardAncestry.where.not(ancestry: nil)) }
+
+  def belong_subtree
+    self.root.subtree
+  end
 end
