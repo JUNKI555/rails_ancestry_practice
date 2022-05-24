@@ -47,4 +47,8 @@ rails g scaffold IssueClosure epic_closure:references issue_name:string descript
 rails g controller home index --skip-assets --skip-helper --skip-stylesheets --skip-jbuilder
 
 rails g migration add_ancestry_to_board_ancestry ancestry:string:index
+# ------
+rails g migration add_parent_id_to_board_closure parent_id:integer:index
+rails g closure_tree:migration board_closure
+rails g closure_tree:config
 ```

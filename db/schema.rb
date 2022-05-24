@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_19_050509) do
+ActiveRecord::Schema.define(version: 2022_05_23_143320) do
 
   create_table "board_ancestries", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "board_name"
@@ -21,10 +21,20 @@ ActiveRecord::Schema.define(version: 2022_05_19_050509) do
     t.index ["ancestry"], name: "index_board_ancestries_on_ancestry"
   end
 
+  create_table "board_closure_hierarchies", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "ancestor_id", null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations", null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "board_closure_anc_desc_idx", unique: true
+    t.index ["descendant_id"], name: "board_closure_desc_idx"
+  end
+
   create_table "board_closures", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "board_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "parent_id"
+    t.index ["parent_id"], name: "index_board_closures_on_parent_id"
   end
 
   create_table "boards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
