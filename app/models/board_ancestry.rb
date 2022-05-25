@@ -17,11 +17,13 @@ class BoardAncestry < ApplicationRecord
   has_ancestry orphan_strategy: :rootify, cache_depth: true
   has_many :epic_ancestries
 
-  # 末端である
+  # 末端である（遅いクエリなので注意！）
   scope :leaves, -> { joins("LEFT JOIN board_ancestries AS c ON c.ancestry = CAST(board_ancestries.id AS char(50)) OR c.ancestry = concat(board_ancestries.ancestry, '/', board_ancestries.id)").group("board_ancestries.id").having('COUNT(c.id) = 0') }
 
-  # 親でもないし子孫でもない(rootかつ末端)(rootsは親が含まれるので末端であるかどうかで親を除外)
-  scope :not_parents_and_not_children, -> { roots.leaves }
+  # 親でもないし子孫でもない(rootかつ末端)(rootsは親が含まれるので自分を親にするものは除外)
+  scope :not_parents_and_not_children, -> {
+    roots.joins("LEFT JOIN board_ancestries AS c ON c.ancestry LIKE CONCAT(board_ancestries.id, '/%')").where('c.id IS NULL')
+  }
 
   # 親である
   scope :parents, -> { where(id: BoardAncestry.select(:ancestry).distinct.pluck(:ancestry).compact.map { |x| x.split('/') }.flatten.uniq) }
