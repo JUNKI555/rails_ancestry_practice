@@ -40,6 +40,11 @@ class BoardClosure < ApplicationRecord
                 .to_sql
   end
 
+  # 取引先配列の全ての親取引先
+  def self.parent_customers(board_closures)
+    BoardClosure.where(id: board_closures.pluck(:parent_id))
+  end
+
   def belong_hash_tree
     self.root.hash_tree
   end
