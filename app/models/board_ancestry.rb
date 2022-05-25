@@ -31,8 +31,13 @@ class BoardAncestry < ApplicationRecord
   # 親、もしくは子孫である
   scope :parents_or_children, -> { parents.or(BoardAncestry.where.not(ancestry: nil)) }
 
+  # 取引先配列の全ての親取引先
+  def self.parent_customers(board_ancestries)
+    BoardAncestry.where(id: board_ancestries.map do |i| i.parent_id end)
+  end
+
   # nodeの全ての子孫
   def belong_sub_tree
-    self.root.subtree
+    self.root.subtree.order(ancestry: :asc).order(id: :asc)
   end
 end
